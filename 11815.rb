@@ -1,0 +1,1 @@
+gets; gets.chomp.split(' ').map{ |e| e.to_i }.each{ |e| (Math.sqrt(e).ceil)**2 === e ? print("1 ") : print("0 ") }
