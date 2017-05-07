@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <algorithm>
 
-#define MAX 5000001
+#define MAX 500001
 
 using namespace std;
 
