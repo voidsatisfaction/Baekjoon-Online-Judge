@@ -1,9 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"log"
+	"os"
+)
 
 func main() {
-	var a, b int
-	fmt.Scanf("%d %d", &a, &b)
-	fmt.Println(a + b)
+	s := bufio.NewScanner(os.Stdin)
+	for s.Scan() {
+		fmt.Println(s.Text())
+	}
+	if s.Err() != nil {
+		log.Fatal(s.Err())
+	}
 }
