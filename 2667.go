@@ -99,25 +99,14 @@ func bfs(box *[][]int, visited *[][]bool, i int, j int) int {
 		for i := 0; i < nextQueueSize; i++ {
 			t := nextQueue.pop()
 			row, col := t[0], t[1]
-			if row-1 >= 0 && (*box)[row-1][col] == 1 && !(*visited)[row-1][col] {
-				nextQueue.push([]int{row - 1, col})
-				(*visited)[row-1][col] = true
-				counts++
-			}
-			if row+1 < N && (*box)[row+1][col] == 1 && !(*visited)[row+1][col] {
-				nextQueue.push([]int{row + 1, col})
-				(*visited)[row+1][col] = true
-				counts++
-			}
-			if col-1 >= 0 && (*box)[row][col-1] == 1 && !(*visited)[row][col-1] {
-				nextQueue.push([]int{row, col - 1})
-				(*visited)[row][col-1] = true
-				counts++
-			}
-			if col+1 < N && (*box)[row][col+1] == 1 && !(*visited)[row][col+1] {
-				nextQueue.push([]int{row, col + 1})
-				(*visited)[row][col+1] = true
-				counts++
+			dx := []int{col, col, col - 1, col + 1}
+			dy := []int{row - 1, row + 1, row, row}
+			for j := 0; j < 4; j++ {
+				if dy[j] >= 0 && dy[j] < N && dx[j] >= 0 && dx[j] < N && (*box)[dy[j]][dx[j]] == 1 && !(*visited)[dy[j]][dx[j]] {
+					nextQueue.push([]int{dy[j], dx[j]})
+					(*visited)[dy[j]][dx[j]] = true
+					counts++
+				}
 			}
 		}
 	}
