@@ -64,7 +64,7 @@ int main() {
 
   for (int i = 1; i < N+1; i++)
   {
-    int totalTime = dijkstra(i, X) + dijkstra(X, i);
+    int totalTime = dijkstra(i, X); // + dijkstra(X, i);
     totalTimes.push_back(totalTime);
   }
   printf("%d\n", *max_element(totalTimes.begin(), totalTimes.end()));
