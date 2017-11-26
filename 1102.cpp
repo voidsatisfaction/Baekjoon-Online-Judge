@@ -10,6 +10,8 @@ int visited, visitedNum, P;
 
 int getMinCost(int visitedNum, int visited)
 {
+  // 처음부터 Y의 개수가 P보다 많을 수 있음
+  // 그래서 visitedNum >= P
   if (visitedNum >= P){
     return 0;
   }
@@ -19,6 +21,7 @@ int getMinCost(int visitedNum, int visited)
     return result;
   }
 
+  // 기본적으로 전탐색
   result = INF;
   for (int i = 0; i < N; i++)
   {
@@ -26,6 +29,7 @@ int getMinCost(int visitedNum, int visited)
     int cur = i;
     for (int j = 0; j < N; j++)
     {
+      // i == j는 탐색하지 말아야 한다.
       if (i == j || (visited & (1 << j))) continue;
       int next = j;
       result = std::min(
