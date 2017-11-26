@@ -32,6 +32,8 @@ int getMinCost(int visitedNum, int visited)
       // i == j는 탐색하지 말아야 한다.
       if (i == j || (visited & (1 << j))) continue;
       int next = j;
+      // 지금 상태에서 minCost = min(지금 상태minCost, 다음 상태 minCost)
+      // 이를 현상태에서 변화할 수 있는 모든 경우의 수로 구함
       result = std::min(
         result,
         getMinCost(visitedNum + 1, (visited | (1 << next))) + cost[cur][next]
