@@ -67,6 +67,7 @@ func main() {
 				continue
 			}
 			ufDown.union(A, B)
+			good++
 		} else { // up
 			if ufUp.find(A, B) {
 				continue
@@ -76,15 +77,5 @@ func main() {
 		}
 	}
 
-	set := make(map[int]bool)
-	for _, downNode := range ufDown.forest {
-		root := ufDown.root(downNode)
-		if _, ok := set[root]; !ok {
-			set[root] = true
-			good++
-		}
-	}
-	good--
-
-	fmt.Printf("%d\n", bad*bad-good*good)
+	fmt.Printf("%d\n", bad*bad-(N-good)*(N-good))
 }
