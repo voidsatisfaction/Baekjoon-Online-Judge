@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <vector>
 #include <queue>
+#include <cstring>
 
 #define MAX_N 10000
 
@@ -45,7 +46,8 @@ int bfs(int s, int d)
   int lv = 0;
   if (s == d)
     return lv;
-  bool marked[MAX_N] = {0, };
+  bool marked[MAX_N];
+  memset(marked, 0, sizeof(marked));
   queue<int> q;
 
   q.push(s);
